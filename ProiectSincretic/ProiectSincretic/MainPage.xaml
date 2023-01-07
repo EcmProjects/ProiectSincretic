@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ProiectSincretic"
+             x:DataType="local:MainPageViewModel"
+             x:Class="ProiectSincretic.MainPage">
+
+    <Grid Margin="0" Padding="0" RowDefinitions="120,*,80">
+      
+
+
+        <Frame BackgroundColor="#2196F3" Padding="18" CornerRadius="0" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" >
+            <Label Text="Aplicatie de test Proiect sicnretic!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+
+        <CollectionView ItemsSource="{Binding List}" ItemSizingStrategy="MeasureAllItems" Grid.Row="1" BackgroundColor="White" Margin="0" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Null}">
+                   
+                        <Frame BackgroundColor="White" CornerRadius="8" MinimumHeightRequest="50"  Margin="1" Padding="0">
+                            <Label Text="{Binding .}" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" LineBreakMode="WordWrap" FontSize="12" Margin="10,0,0,0"/>
+                        </Frame>
+                    
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Incepe Test!" Margin="10,0,10,10" HorizontalOptions="FillAndExpand" Command="{Binding StartTestCommand}"  Grid.Row="2" VerticalOptions="End" TextColor="White" CornerRadius="8">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#3737f0" Offset="0.0" />
+                    <GradientStop Color="#00d4ff" Offset="1.0" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+        <local:ActivityPopup Grid.Row="0" Grid.RowSpan="3" IsVisible="{Binding IsBussy}"/>
+    </Grid>
+
+</ContentPage>
